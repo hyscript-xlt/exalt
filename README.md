@@ -12,7 +12,7 @@ The project exposes the REST and SOAP endpoints.
 ## Requirements
 To be able to build and deploy the application we need to have
 * Aerospike database up and running on **localhost:3000**. 
-  In case if you are running DB on different port/host you can configure it in `application.proeprties`.
+  In case if you are running DB on different port/host you can configure it in `application.properties`.
 * TomEE 8.0.6 server
 * Minimum Java 8
 
