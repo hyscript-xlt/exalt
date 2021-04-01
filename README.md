@@ -5,8 +5,7 @@ This project aims to get to used making REST/SOAP API by using Java EE 8.
 ##### NOTE: This project was created for educational purposes and do not intended to be used at the production level.
 The project is a simple example of a "Hotel Booking System."
 We have Hotels and Customers; every customer can book a hotel room. 
-There are no strict checks on requests and responses; 
-the main point of the project is to showcase the way that we can organize our backend using Java EE 8 and TomEE 8.0.6
+There are no strict checks on requests and responses. The main point of the project is to showcase the way that we can organize our backend using Java EE 8 and TomEE 8.0.6
 The project exposes the REST and SOAP endpoints.
 
 ## Requirements
