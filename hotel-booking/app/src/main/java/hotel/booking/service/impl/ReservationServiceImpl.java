@@ -20,7 +20,7 @@ public class ReservationServiceImpl extends CoreService<Reservation> implements 
     @Override
     public Reservation create(Reservation reservation) {
         String uuid = UUID.randomUUID().toString();
-        Key key = getClient().makeKeyDefaultHost(getSetName(), uuid);
+        Key key = getClient().makeKeyDefaultDb(getSetName(), uuid);
         Bin[] arr = Stream.of(
                 new Bin("id", uuid),
                 new Bin("customerId", reservation.getCustomerId()),
@@ -61,7 +61,7 @@ public class ReservationServiceImpl extends CoreService<Reservation> implements 
             //be careful here always update the ID with existing one -> CODE SMELL
             instance.setId(foundCustomer.getId());
             RecordUtil.updateExisting(foundCustomer, instance);
-            Key key = getClient().makeKeyDefaultHost(getSetName(), foundCustomer.getId());
+            Key key = getClient().makeKeyDefaultDb(getSetName(), foundCustomer.getId());
             getClient().update(key, RecordUtil.classToBin(foundCustomer));
             return true;
         }
@@ -70,7 +70,7 @@ public class ReservationServiceImpl extends CoreService<Reservation> implements 
 
     @Override
     public boolean removeBy(String id) {
-        Key key = getClient().makeKeyDefaultHost(getSetName(), id);
+        Key key = getClient().makeKeyDefaultDb(getSetName(), id);
         getClient().delete(key);
         return true;
     }
@@ -85,17 +85,3 @@ public class ReservationServiceImpl extends CoreService<Reservation> implements 
         return Client.instanceOf();
     }
 }
-/*
-<!--Optional:-->
-            <id></id>
-            <!--Optional:-->
-            <status>RESERVED</status>
-            <startDate>18717</startDate>
-            <endDate>18718</endDate>
-            <!--Optional:-->
-            <roomId>fddfebd1-d8c0-4321-a372-6026671ea80b</roomId>
-            <!--Optional:-->
-            <hotelId>fcb81c0d-a702-40b3-81a1-20a17a9d91c8</hotelId>
-            <!--Optional:-->
-            <customerId>d9332490-e553-49e4-8b21-4c8dd98e2006</customerId>
- */

@@ -11,6 +11,9 @@ import java.util.List;
 
 import static hotel.booking.config.ApplicationConfig.getCustomerSetName;
 
+/**
+ * REST endpoints for the Customers.
+ */
 @Path("/customer")
 public class CustomerController {
     private final CustomerService service = new CustomerServiceImpl();
@@ -56,7 +59,7 @@ public class CustomerController {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response getByEmail(@QueryParam("mail") String value) {
-       return getBy("mail", value);
+        return getBy("mail", value);
     }
 
     @GET
@@ -77,7 +80,7 @@ public class CustomerController {
 
     private Response getBy(String key, String value) {
         List<Customer> customers = service.getBy(getCustomerSetName(), key, value);
-        if(customers.isEmpty()) {
+        if (customers.isEmpty()) {
             return Response.noContent().build();
         }
         return Response.accepted(customers).build();

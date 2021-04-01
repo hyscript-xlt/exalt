@@ -24,7 +24,7 @@ public class HotelServiceImpl extends CoreService<Hotel> implements HotelService
                 new Bin("address", instance.getAddress()),
                 new Bin("rooms", instance.getRooms())
         ).toArray(Bin[]::new);
-        Key key = getClient().makeKeyDefaultHost(getSetName(), String.valueOf(instance.getId()));
+        Key key = getClient().makeKeyDefaultDb(getSetName(), String.valueOf(instance.getId()));
         getClient().insert(key, bins);
         return instance;
     }
@@ -47,7 +47,7 @@ public class HotelServiceImpl extends CoreService<Hotel> implements HotelService
             //be careful here always update the ID with existing one -> CODE SMELL
             hotel.setId(tobeUpdated.getId());
             RecordUtil.updateExisting(tobeUpdated, hotel);
-            Key key = getClient().makeKeyDefaultHost(getSetName(), tobeUpdated.getId());
+            Key key = getClient().makeKeyDefaultDb(getSetName(), tobeUpdated.getId());
             getClient().update(key, RecordUtil.classToBin(tobeUpdated));
             return true;
         }

@@ -11,6 +11,9 @@ import java.util.List;
 
 import static hotel.booking.config.ApplicationConfig.*;
 
+/**
+ * REST endpoints for the Hotels.
+ */
 @Path("/hotel")
 public class HotelController {
     //bad idea: need to find a way to inject the service

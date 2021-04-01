@@ -16,7 +16,7 @@ public class CustomerServiceImpl extends CoreService<Customer> implements Custom
 
     @Override
     public Customer create(Customer customer) {
-        Key key = getClient().makeKeyDefaultHost(getCustomerSetName(), customer.getId());
+        Key key = getClient().makeKeyDefaultDb(getCustomerSetName(), customer.getId());
         Bin[] arr = Stream.of(
                 new Bin("id", customer.getId()),
                 new Bin("name", customer.getName()),
@@ -46,7 +46,7 @@ public class CustomerServiceImpl extends CoreService<Customer> implements Custom
             //be careful here always update the ID with existing one -> CODE SMELL
             customer.setId(tobeUpdated.getId());
             RecordUtil.updateExisting(tobeUpdated, customer);
-            Key key = getClient().makeKeyDefaultHost(getSetName(), tobeUpdated.getId());
+            Key key = getClient().makeKeyDefaultDb(getSetName(), tobeUpdated.getId());
             getClient().update(key, RecordUtil.classToBin(tobeUpdated));
             return true;
         }
