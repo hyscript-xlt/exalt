@@ -17,4 +17,19 @@ To be able to build and deploy the application we need to have
 * TomEE 8.0.6 server
 * Minimum Java 8
 
- 
+# RESOURCE MANAGEMENT SERVICE
+
+## Motivation
+The essence of the project is to train concurrency, the project is named a server pool in which it will allocate some computation power or memory on the cloud via a cloud provider.
+
+## Requirements
+* Docker
+* Java 8 or higher
+
+## Instalation
+Before running the project please up the `docker-compose.yml` by the following command.  
+```
+                                 docker-compose -f docker-compose.yml up -d
+```
+It does several things, first of all it will download the `Aerospike DB`,`Kafka` and `zookeeper`(the Kafka server) then creates the containers and run them.  
+`-d` will run the commands on background. The project can be build by `./gradlew build` command.  
