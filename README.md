@@ -1,3 +1,5 @@
+#HOTEL BOOKING SYSTEM
+
 ## Motivation
 This project aims to get to used making REST/SOAP API by using Java EE 8.
 
